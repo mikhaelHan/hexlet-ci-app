@@ -9,6 +9,13 @@ jobs:
       # 1. Клонируем репозиторий
       - uses: actions/checkout@v4
 
+      # Устанавливаем Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "16"
+          cache: "npm"
+
       # 2. Устанавливаем зависимости
       - name: Install dependencies
         run: make setup
@@ -20,3 +27,7 @@ jobs:
       # 4. Запускаем тесты
       - name: Run tests
         run: make test
+
+      # 4. Выводим текст
+      - name: Print Hello from Hexlet
+        uses: hexlet-components/hello-from-hexlet-action@release
