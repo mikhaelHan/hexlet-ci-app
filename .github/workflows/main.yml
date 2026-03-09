@@ -1,0 +1,22 @@
+name: Hexlet CI App
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Клонируем репозиторий
+      - uses: actions/checkout@v4
+
+      # 2. Устанавливаем зависимости
+      - name: Install dependencies
+        run: make setup
+
+      # 3. Запускаем линтер
+      - name: Run linter
+        run: make lint
+
+      # 4. Запускаем тесты
+      - name: Run tests
+        run: make test
